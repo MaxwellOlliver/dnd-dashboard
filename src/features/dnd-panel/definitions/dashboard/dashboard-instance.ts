@@ -24,7 +24,7 @@ export type DashboardInstance = {
 export function createDashboardInstance(): DashboardInstance {
   let state: DashboardState = {
     components: [],
-    title: "",
+    title: "New dashboard",
     description: undefined,
   };
   const listeners = new Set<Listener>();
