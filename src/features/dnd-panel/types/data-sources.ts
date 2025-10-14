@@ -1,5 +1,3 @@
-import type { Entity } from "./entities";
-
 interface DataSourceFetchParams {
   query?: string;
   limit?: number;
@@ -7,8 +5,9 @@ interface DataSourceFetchParams {
 }
 
 export type DataSource = {
+  id: string;
   name: string;
   description: string;
   fetch: (params: DataSourceFetchParams) => Promise<unknown>;
-  entity: Entity;
+  entityId: string;
 };

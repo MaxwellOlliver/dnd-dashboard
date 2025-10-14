@@ -28,6 +28,7 @@ export type Field =
     };
 
 export type Entity = {
+  id: string;
   name: string;
   description: string;
   icon: IconName;

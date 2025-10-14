@@ -1,6 +1,7 @@
 import type { Entity } from "../../types/entities";
 
 export const PokemonEntity: Entity = {
+  id: "pokemon",
   name: "Pokémon",
   description:
     "A fictional species of creatures that trainers catch and train.",

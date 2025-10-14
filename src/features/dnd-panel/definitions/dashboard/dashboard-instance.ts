@@ -1,31 +1,16 @@
-export type DashboardState = {
-  title: string;
-  description?: string;
-  components: unknown[];
-};
-
-type Listener = () => void;
-
-export type DashboardInstance = {
-  state: DashboardState;
-
-  getState: () => DashboardState;
-  getInstance: () => DashboardInstance;
-  getTitle: () => string;
-  getDescription: () => string | undefined;
-
-  setTitle: (title: string) => void;
-  setDescription: (description: string) => void;
-
-  // EV
-  subscribe(fn: Listener): () => void;
-};
+import { v4 as uuidv4 } from "uuid";
+import type {
+  DashboardInstance,
+  DashboardState,
+  Listener,
+} from "../../types/dashboard";
 
 export function createDashboardInstance(): DashboardInstance {
   let state: DashboardState = {
     components: [],
     title: "New dashboard",
     description: undefined,
+    id: uuidv4(),
   };
   const listeners = new Set<Listener>();
 
@@ -42,6 +27,7 @@ export function createDashboardInstance(): DashboardInstance {
     getState: () => state,
     getTitle: () => state.title,
     getDescription: () => state.description,
+    getComponents: () => state.components,
 
     setTitle: (title: string) => {
       state = {
