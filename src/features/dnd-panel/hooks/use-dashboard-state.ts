@@ -1,7 +1,9 @@
 import { useSyncExternalStore } from "react";
-import type { DashboardInstance } from "../definitions/dashboard/dashboard-instance";
+import { useDashboardContext } from "./use-dashboard-context";
 
-export function useDashboardState(dashboardInstance: DashboardInstance) {
+export function useDashboardState() {
+  const { dashboardInstance } = useDashboardContext();
+
   return useSyncExternalStore(
     dashboardInstance.subscribe,
     dashboardInstance.getState
