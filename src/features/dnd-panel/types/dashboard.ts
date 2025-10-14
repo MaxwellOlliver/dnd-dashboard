@@ -1,4 +1,4 @@
-import type { Component } from "react";
+import type { Component } from "./component";
 
 export type Dashboard = {
   id: string;
@@ -27,6 +27,8 @@ export type DashboardInstance = {
 
   setTitle: (title: string) => void;
   setDescription: (description: string) => void;
+  updateComponent: (id: string, data: Omit<Component, "id">) => void;
+  addComponent: (component: Component) => void;
 
   // EV
   subscribe(fn: Listener): () => void;

@@ -44,6 +44,23 @@ export function createDashboardInstance(): DashboardInstance {
       notify();
     },
 
+    updateComponent: (id, data) => {
+      state = {
+        ...state,
+        components: state.components.map((component) =>
+          component.id === id ? { ...component, ...data } : component
+        ),
+      };
+      notify();
+    },
+    addComponent: (component) => {
+      state = {
+        ...state,
+        components: [...state.components, component],
+      };
+      notify();
+    },
+
     subscribe(fn) {
       listeners.add(fn);
       return () => listeners.delete(fn);

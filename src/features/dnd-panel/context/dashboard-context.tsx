@@ -1,8 +1,6 @@
 import { createContext, type ReactNode } from "react";
-import {
-  createDashboardInstance,
-  type DashboardInstance,
-} from "../definitions/dashboard/dashboard-instance";
+import { createDashboardInstance } from "../definitions/dashboard/dashboard-instance";
+import type { DashboardInstance } from "../types/dashboard";
 
 type DashboardContext = {
   dashboardInstance: DashboardInstance;
