@@ -12,11 +12,12 @@ export const PokeApi: DataSource = {
     );
     const data = await response.json();
 
-    return data.results.map((pokemon: any) => ({
-      id: pokemon.id,
-      name: pokemon.name,
-      type: pokemon.types.map((type: any) => type.type.name).join(", "),
-      image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`,
-    }));
+    return {
+      items: data.results.map((pokemon: any) => ({
+        name: pokemon.name,
+        url: pokemon.url,
+      })),
+      total: data.count,
+    };
   },
 };

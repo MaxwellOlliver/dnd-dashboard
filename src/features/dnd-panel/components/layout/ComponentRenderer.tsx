@@ -18,17 +18,22 @@ export const ComponentRenderer = ({ component }: ComponentRendererProps) => {
   if (!dataSource) return null;
   if (!ToolComponent) return null;
 
-  const entity = getEntityById(dataSource.id);
+  const entity = getEntityById(dataSource.entityId);
 
   return (
     <div
-      className={cn("h-full w-full rounded-md bg-card border p-4")}
+      data-slot="component-renderer"
+      className={cn(
+        "h-full w-full rounded-md bg-card border p-4 flex flex-col gap-4",
+      )}
       style={{
         gridColumn: `span ${layout.cols}`,
         gridRow: `span ${layout.rows}`,
       }}
     >
-      <h4>{title}</h4>
+      <header>
+        <h4 className="text-lg font-semibold">{title}</h4>
+      </header>
 
       <Suspense>
         <ToolComponent

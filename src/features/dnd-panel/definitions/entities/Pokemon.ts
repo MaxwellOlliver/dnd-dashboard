@@ -15,29 +15,10 @@ export const PokemonEntity: Entity = {
       key: "name",
     },
     {
-      name: "Type",
-      key: "type",
-      type: "enum",
-      description: "The elemental type of the Pokémon.",
-      values: ["Fire", "Water", "Grass", "Electric", "Psychic", "Normal"],
-    },
-    {
-      name: "Level",
-      key: "level",
-      type: "number",
-      description: "The level of the Pokémon.",
-    },
-    {
-      name: "Is Shiny",
-      key: "isShiny",
-      type: "boolean",
-      description: "Whether the Pokémon is a shiny variant.",
-    },
-    {
-      name: "Caught At",
-      key: "caughtAt",
-      type: "date",
-      description: "The date when the Pokémon was caught.",
+      name: "URL",
+      type: "string",
+      description: "The URL of the Pokémon's official website.",
+      key: "url",
     },
   ],
 } as const;

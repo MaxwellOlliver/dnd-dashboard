@@ -1,5 +1,7 @@
 import type { IconName } from "lucide-react/dynamic";
 import type { JSX, LazyExoticComponent } from "react";
+import type { Component } from "./component";
+import type { DataSource } from "./data-sources";
 
 export const FIELD_TYPE = {
   STRING: "string",
@@ -17,6 +19,10 @@ export type CustomFieldProps = {
   onChange: (value: any) => void;
   onBlur: (e: React.FocusEvent<HTMLInputElement>) => void;
   onFocus: (e: React.FocusEvent<HTMLInputElement>) => void;
+
+  component: Component;
+  entity: Entity;
+  datasource: DataSource;
 };
 
 export type Field<FieldName = string> =

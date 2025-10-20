@@ -2,6 +2,8 @@ import { Button } from "@/components/ui/button";
 import { Save } from "lucide-react";
 import { useDashboardContext } from "../../hooks/use-dashboard-context";
 import { v4 as uuidv4 } from "uuid";
+import { PokeApi } from "../../definitions/datasources";
+import { TableTool } from "../../definitions/tools";
 
 export const ToolBox = () => {
   const { dashboardInstance } = useDashboardContext();
@@ -14,11 +16,11 @@ export const ToolBox = () => {
           dashboardInstance.addComponent({
             id: uuidv4(),
             title: "New component",
-            dataSourceId: "",
-            toolId: "",
+            dataSourceId: PokeApi.id,
+            toolId: TableTool.id,
             layout: {
-              cols: 1,
-              rows: 3,
+              cols: 4,
+              rows: 2,
             },
             state: {},
           })
