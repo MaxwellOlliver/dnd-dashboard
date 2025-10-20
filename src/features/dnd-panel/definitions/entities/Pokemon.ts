@@ -19,7 +19,6 @@ export const PokemonEntity: Entity = {
       key: "type",
       type: "enum",
       description: "The elemental type of the Pokémon.",
-      fields: ["string"],
       values: ["Fire", "Water", "Grass", "Electric", "Psychic", "Normal"],
     },
     {
@@ -41,4 +40,4 @@ export const PokemonEntity: Entity = {
       description: "The date when the Pokémon was caught.",
     },
   ],
-};
+} as const;

@@ -1,3 +1,5 @@
+import type { ToolProps } from "./tools";
+
 export type Component = {
   id: string;
   toolId: string;
@@ -8,8 +10,8 @@ export type Component = {
 };
 
 export type ComponentState = {
-  dataSourceParams: Record<string, unknown>;
-  toolParams: Record<string, unknown>;
+  dataSourceParams?: Record<string, unknown>;
+  toolParams?: ToolProps;
 };
 
 export type ComponentLayout = {

@@ -30,6 +30,6 @@ export type DashboardInstance = {
   updateComponent: (id: string, data: Omit<Component, "id">) => void;
   addComponent: (component: Component) => void;
 
-  // EV
+  // React Sync State purpose only
   subscribe(fn: Listener): () => void;
 };

@@ -4,7 +4,7 @@ import { cn } from "@/utils/cn";
 import { ComponentRenderer } from "./ComponentRenderer";
 
 export const MainPanel = () => {
-  const { components } = useDashboardState();
+  const components = useDashboardState((state) => state.components);
 
   return (
     <div

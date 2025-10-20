@@ -17,13 +17,10 @@ export const ToolBox = () => {
             dataSourceId: "",
             toolId: "",
             layout: {
-              cols: 2,
-              rows: 2,
+              cols: 1,
+              rows: 3,
             },
-            state: {
-              dataSourceParams: {},
-              toolParams: {},
-            },
+            state: {},
           })
         }
       >
