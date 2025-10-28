@@ -1,14 +1,14 @@
-import { v4 as uuidv4 } from "uuid";
+import { v4 as uuidv4 } from 'uuid';
 import type {
   DashboardInstance,
   DashboardState,
   Listener,
-} from "../../types/dashboard";
+} from '../../types/dashboard';
 
 export function createDashboardInstance(): DashboardInstance {
   let state: DashboardState = {
     components: [],
-    title: "New dashboard",
+    title: 'New dashboard',
     description: undefined,
     id: uuidv4(),
   };
@@ -48,7 +48,7 @@ export function createDashboardInstance(): DashboardInstance {
       state = {
         ...state,
         components: state.components.map((component) =>
-          component.id === id ? { ...component, ...data } : component
+          component.id === id ? { ...component, ...data } : component,
         ),
       };
       notify();
@@ -57,6 +57,13 @@ export function createDashboardInstance(): DashboardInstance {
       state = {
         ...state,
         components: [...state.components, component],
+      };
+      notify();
+    },
+    removeComponent: (id) => {
+      state = {
+        ...state,
+        components: state.components.filter((component) => component.id !== id),
       };
       notify();
     },

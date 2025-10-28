@@ -1,9 +1,10 @@
-import { Button } from "@/components/ui/button";
-import { Save } from "lucide-react";
-import { useDashboardContext } from "../../hooks/use-dashboard-context";
-import { v4 as uuidv4 } from "uuid";
-import { PokeApi } from "../../definitions/datasources";
-import { TableTool } from "../../definitions/tools";
+import { Button } from '@/components/ui/button';
+import { Save } from 'lucide-react';
+import { useDashboardContext } from '../../hooks/use-dashboard-context';
+import { v4 as uuidv4 } from 'uuid';
+import { PokeApi } from '../../definitions/datasources';
+import { TableTool, tools } from '../../definitions/tools';
+import { DynamicIcon } from 'lucide-react/dynamic';
 
 export const ToolBox = () => {
   const { dashboardInstance } = useDashboardContext();
@@ -15,7 +16,7 @@ export const ToolBox = () => {
         onClick={() =>
           dashboardInstance.addComponent({
             id: uuidv4(),
-            title: "New component",
+            title: 'New component',
             dataSourceId: PokeApi.id,
             toolId: TableTool.id,
             layout: {
@@ -29,6 +30,12 @@ export const ToolBox = () => {
         <Save />
         Salvar
       </Button>
+      {tools.map((tool) => (
+        <Button key={tool.id} variant="outline" onClick={() => {}}>
+          <DynamicIcon name={tool.icon} />
+          {tool.name}
+        </Button>
+      ))}
     </div>
   );
 };

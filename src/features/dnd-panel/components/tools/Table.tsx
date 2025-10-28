@@ -1,11 +1,19 @@
-import type { ToolProps } from "../../types/tools";
-import { useQuery } from "@tanstack/react-query";
+import type { ToolProps } from '../../types/tools';
+import { useQuery } from '@tanstack/react-query';
+import {
+  Table as TableRoot,
+  TableBody,
+  TableHead,
+  TableRow,
+  TableHeader,
+  TableCell,
+} from '@/components/ui/table';
 
 export default function Table({ component, datasource, entity }: ToolProps) {
   console.log(entity);
   const { data } = useQuery({
     enabled: true,
-    queryKey: ["table", component.id],
+    queryKey: ['table', component.id],
     queryFn: async () => {
       const response = await datasource.fetch(
         component.state.dataSourceParams ?? {
@@ -24,23 +32,25 @@ export default function Table({ component, datasource, entity }: ToolProps) {
   }));
 
   return (
-    <table className="table-auto border-white/5 border w-full">
-      <thead>
-        <tr className="bg-white/5">
+    <TableRoot>
+      <TableHeader>
+        <TableRow className="bg-white/5">
           {columns.map((column) => (
-            <th key={column.key}>{column.name}</th>
+            <TableHead key={column.key}>{column.name}</TableHead>
           ))}
-        </tr>
-      </thead>
-      <tbody>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
         {data?.items.map((item) => (
-          <tr key={item.id as string}>
+          <TableRow key={item.id as string}>
             {columns.map((column) => (
-              <td key={column.key}>{item[column.key] as string}</td>
+              <TableCell key={column.key}>
+                {item[column.key] as string}
+              </TableCell>
             ))}
-          </tr>
+          </TableRow>
         ))}
-      </tbody>
-    </table>
+      </TableBody>
+    </TableRoot>
   );
 }
