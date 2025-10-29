@@ -10,7 +10,7 @@ import {
 } from '@/components/ui/table';
 
 export default function Table({ component, datasource, entity }: ToolProps) {
-  console.log(entity);
+  console.log(component.id, 'rendered');
   const { data } = useQuery({
     enabled: true,
     queryKey: ['table', component.id],

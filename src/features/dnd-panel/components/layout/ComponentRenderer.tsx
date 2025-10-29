@@ -1,6 +1,6 @@
 import { cn } from '@/utils/cn';
 import type { Component } from '../../types/component';
-import { Suspense } from 'react';
+import { memo, Suspense } from 'react';
 import { getToolComponent } from '../../helpers/tools-helper';
 import { getEntityById } from '../../helpers/entity-helper';
 import { getDataSourceById } from '../../helpers/datasource-helper';
@@ -12,7 +12,7 @@ interface ComponentRendererProps {
   component: Component;
 }
 
-export const ComponentRenderer = ({ component }: ComponentRendererProps) => {
+const ComponentRendererComponent = ({ component }: ComponentRendererProps) => {
   const { title, layout, toolId, state, dataSourceId } = component;
 
   const { dashboardInstance } = useDashboardContext();
@@ -68,3 +68,8 @@ export const ComponentRenderer = ({ component }: ComponentRendererProps) => {
     </div>
   );
 };
+
+export const ComponentRenderer = memo(
+  ComponentRendererComponent,
+  (prev, next) => prev.component.id === next.component.id,
+);
